@@ -2,14 +2,26 @@ const express = require('express')
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'ejs');
 
+const contact = [
+                    {
+                        nama: "muhammad eka saputra",
+                        tlpn  : "08124971970"
+                    },
+                    {
+                        nama: " eka saputra",
+                        tlpn  : "08124971910"
+                    }
+                ]
 
 
 app.get('/', (req, res) => {
-    res.sendFile('./index.html', {root: __dirname});
+   res.render('index', {title: 'Index'});
 })
 app.get('/contact', (req, res) => {
-    res.sendFile('./contact.html', {root: __dirname});
+    console.log(contact);
+    res.render('contact', {title: 'Contact', data: contact});
 })
 app.get('/produk/:id/categori/:kategori', (req, res) => {
       id = req.params.id;
@@ -18,7 +30,7 @@ app.get('/produk/:id/categori/:kategori', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.send('./about.html', {root: __dirname});
+    res.render('about', {title: 'Contact', });
 })
 
 app.use('/', (req, res) => {

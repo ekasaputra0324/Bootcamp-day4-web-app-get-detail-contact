@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+    <%- include('partials/navbar') %>
+        <% const nama='eka saputra' %>
+            <h3 style="text-align: center; margin-top: 3%;"> Page contact</h3>
+            <table class="table" style="margin-top: 3%;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Mobile</th>
+                    <!-- <th scope="col">Handle</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                    <% angka = 1; %>
+                    <% if(data.length){ for (let i = 0; i < data.length; i++) {  %>
+                        <tr>
+                            <th scope="row"><%= angka %></th>
+                            <td><%= data[i].nama %></td>
+                            <td><%= data[i].tlpn %></td>
+                       </tr>
+                       <% angka++ %>
+                     <%   } }else{ %>
+                        <tr>
+                            <td>data not found</td>
+                       </tr>
+                        <% } %>
+                </tbody>
+              </table>
+            <%- include('partials/footer') %>
