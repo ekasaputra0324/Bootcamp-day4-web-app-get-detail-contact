@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <h3 style="text-align: center; margin-top: 6%;">Detail Contact</h3>
+        <div class="card" style="width: 18rem; margin-bottom: 6%; margin-left: 39%; text-align: center;">
+            <% for (let i = 0; i < detail.length; i++) { %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= detail[i].nama %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> <%= detail[i].email %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"> <%= detail[i].tlpn %></h6>
+                </div>
+                <% } %>
+          </div>
+    </div>
+</div>

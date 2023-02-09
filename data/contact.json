@@ -1,10 +1,12 @@
 [
     {
        "nama" : "muhammad eka saputra",
-        "tlpn"  : "08124971970"
+       "tlpn"  : "08124971970",
+       "email" : "ekasaputra@gmail.com"
     },
     {
         "nama":  "eka saputra",
-        "tlpn"  : "08124971910"
+        "tlpn"  : "08124971910",
+        "email" : "putra@gmail.com"
     }
 ]

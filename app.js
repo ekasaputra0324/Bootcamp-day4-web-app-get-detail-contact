@@ -30,6 +30,15 @@ app.get('/contact', (req, res) => {
     });
 })
 
+app.get('/contact/detail/:name', (req, res)=> {
+    const name = req.params.name;
+    fs.readFile('./data/contact.json', 'utf-8',(err, data) =>{
+       let parse = JSON.parse(data);
+        detail =  parse.filter(contact => contact.nama.toLowerCase() == name.toLowerCase());
+        res.render('detail', {title:'Detail',  detail})
+    });
+});
+
 app.get('/produk/:id/categori/:kategori', (req, res) => {
       id = req.params.id;
       kategori = req.params.kategori;
