@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express();
+const fs = require('fs');
+const morgan = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 const port = 3000;
 
@@ -7,17 +9,9 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', './layout/layout.ejs');
 app.use(express.static('public'));
+app.use(morgan('dev'));
 
-const contact = [
-                    {
-                        nama: "muhammad eka saputra",
-                        tlpn  : "08124971970"
-                    },
-                    {
-                        nama: " eka saputra",
-                        tlpn  : "08124971910"
-                    }
-                ]
+const contact = 
 
 // app.use((req, res, next) => {
 // console.log('Time:', Date.now())
@@ -28,8 +22,12 @@ app.get('/', (req, res) => {
    res.render('index', {title: 'Index'});
 })
 app.get('/contact', (req, res) => {
-    console.log(contact);
-    res.render('contact', {title: 'Contact', data: contact});
+    fs.readFile('./data/contact.json', 'utf-8',(err, data) =>{
+        if (err) throw err;
+        data = JSON.parse(data);
+        console.log(data);
+        res.render('contact', {title: 'Contact', data});
+    });
 })
 
 app.get('/produk/:id/categori/:kategori', (req, res) => {
