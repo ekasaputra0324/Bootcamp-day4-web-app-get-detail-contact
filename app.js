@@ -6,7 +6,7 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', './layout/layout.ejs');
-
+app.use(express.static('public'));
 
 const contact = [
                     {
@@ -19,6 +19,10 @@ const contact = [
                     }
                 ]
 
+// app.use((req, res, next) => {
+// console.log('Time:', Date.now())
+// next()
+// })
 
 app.get('/', (req, res) => {
    res.render('index', {title: 'Index'});
@@ -35,7 +39,7 @@ app.get('/produk/:id/categori/:kategori', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.render('about', {title: 'Contact', });
+    res.render('about', {title: 'About Me', });
 })
 
 app.use('/', (req, res) => {
