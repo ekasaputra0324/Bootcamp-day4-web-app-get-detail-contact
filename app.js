@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express();
+var expressLayouts = require('express-ejs-layouts');
 const port = 3000;
 
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', './layout/layout.ejs');
+
 
 const contact = [
                     {
@@ -23,6 +27,7 @@ app.get('/contact', (req, res) => {
     console.log(contact);
     res.render('contact', {title: 'Contact', data: contact});
 })
+
 app.get('/produk/:id/categori/:kategori', (req, res) => {
       id = req.params.id;
       kategori = req.params.kategori;
